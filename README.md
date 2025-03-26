@@ -33,7 +33,8 @@
    - Displays active polls and their registered candidates.
    - Allows users to vote for their preferred candidate.
    - Displays real-time voting statistics for transparency.
-
+---
+![image](https://github.com/user-attachments/assets/c13b9342-02e7-4208-ae73-cfea0d24ae90)
 ---
 
 ## Technologies Used
