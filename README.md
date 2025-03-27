@@ -1,128 +1,74 @@
-# Votee: A Decentralized Polling dApp
+# Solana Polls - Application de Gestion des Présences
 
-**Votee** is a decentralized polling application built on the Solana blockchain, allowing users to create polls, register candidates, and vote in a transparent and secure manner. It leverages modern technologies and blockchain infrastructure to provide an interactive and decentralized voting experience.
+Une application décentralisée (dApp) construite sur Solana pour gérer les présences aux formations.
 
-## Features
+## Fonctionnalités
 
-- **Create Polls**: Users can create polls with descriptions, start dates, and end dates.
-- **Register Candidates**: Candidates can register to participate in active polls.
-- **Vote on Polls**: Users can cast votes for registered candidates in active polls.
-- **Real-Time Updates**: Poll details and candidate lists are fetched directly from the blockchain.
-- **Wallet Integration**: Seamlessly connect and interact using Solana-compatible wallets like Phantom.
-- **Toast Notifications**: Get feedback on transactions, including success, pending, or failure statuses.
+- Création de formations
+- Création de sessions
+- Signature de présence par les étudiants
+- Interface d'administration
+- Interface étudiant
 
----
+## Prérequis
 
-## Pages
+- Node.js 16+
+- Rust
+- Solana CLI
+- Anchor Framework
 
-### 1. **Homepage**
-   - Displays a welcome interface and navigation links for creating polls or voting.
+## Installation
 
-### 2. **Create Poll Page**
-   - Form-based interface for creating new polls with fields for:
-     - **Poll Description**: A brief description of the poll's purpose.
-     - **Start Date**: The start date and time of the poll.
-     - **End Date**: The end date and time of the poll.
-
-### 3. **Register Candidate Modal**
-   - Allows candidates to register for a specific poll.
-   - Input field for entering the candidate’s name.
-   - Accessible through an active poll's detail page.
-
-### 4. **Voting Page**
-   - Displays active polls and their registered candidates.
-   - Allows users to vote for their preferred candidate.
-   - Displays real-time voting statistics for transparency.
----
-![image](https://github.com/user-attachments/assets/c13b9342-02e7-4208-ae73-cfea0d24ae90)
----
-
-## Technologies Used
-
-- **Frontend**:
-  - Next.js
-  - TypeScript
-  - React
-  - Redux Toolkit
-  - Tailwind CSS
-  - React Icons
-- **Blockchain Integration**:
-  - Solana Web3.js
-  - @coral-xyz/anchor
-  - Solana Wallet Adapter
-  - Phantom Wallet
-- **Notifications**:
-  - React Toastify
-
----
-
-## Important Note
-
-**Wallet Required**: Before using this dApp, ensure you have a Solana-compatible wallet like Phantom installed. You can download it [here](https://phantom.app/).
-
-**Default Solana Cluster**: The application assumes a local Solana network for development. Ensure your Solana CLI is set to the correct cluster.
-
+1. Clonez le repository :
 ```bash
-solana config set --url http://127.0.0.1:8899
+git clone https://github.com/votre-username/solana-polls.git
+cd solana-polls
 ```
 
-## Installation Guide
-1. Clone the Repository
-
+2. Installez les dépendances :
 ```bash
-git clone https://github.com/Daltonic/votee
-cd votee
+yarn install
 ```
 
-2. Install Dependencies
+3. Configurez le réseau local Solana :
 ```bash
-npm install
+solana config set --url localhost
+solana-keygen new --outfile ~/.config/solana/id.json
+solana airdrop 2
 ```
 
-3. Set Up Environment Variables
-Create a .env file in the root directory and add the following variable for local development:
-
-```sh
-NEXT_PUBLIC_RPC_URL=http://127.0.0.1:8899
+4. Déployez le programme :
+```bash
+anchor build
+anchor deploy
 ```
 
-4. Run Local Solana Test Validator
-If not already running, start a Solana test validator on your local machine:
-
-```sh
-solana-test-validator
+5. Lancez l'application :
+```bash
+yarn dev
 ```
 
-5. Launch the Development Server
-```sh
-npm run dev
+## Structure du Projet
+
+```
+solana-polls/
+├── programs/
+│   └── solana-polls/     # Programme Solana
+├── src/
+│   ├── app/             # Application Next.js
+│   ├── components/      # Composants React
+│   └── config/         # Configuration
+└── tests/              # Tests
 ```
 
-6. Build for Production
-For production, build and start the application:
+## Technologies Utilisées
 
-```sh
-npm run build
-npm start
-```
+- Solana
+- Anchor Framework
+- Next.js
+- TypeScript
+- Tailwind CSS
 
-## Usage
-* Open the application in your browser: http://localhost:3000.
-    * Connect your wallet using the Wallet Adapter button.
-    * Create a poll, register candidates, and vote directly on the blockchain.
+## Licence
 
-* pages/:
-    * index.tsx: Homepage.
-    * create.tsx: Poll creation page.
-
-* services/:
-    * blockchain.service.ts: Functions for interacting with the blockchain (e.g., createPoll, registerCandidate).
-
-* utils/:
-    * Types and helper functions for application logic.
-
-## Contributing
-Contributions are welcome! If you have suggestions, feature requests, or bug reports, please create an issue or submit a pull request.
-
-## License
-This project is licensed under the MIT License. See the LICENSE file for more details.
+MIT
